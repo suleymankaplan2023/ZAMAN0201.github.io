@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kralı Yakala Oyunu</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; 
+               background: #2c3e50; color: white; 
+               margin: 0; padding: 20px;
+               display: flex; justify-content: center; }
+        .container { display: flex; max-width: 100%; }
+        .left-panel { flex: 1; padding: 15px; background: #34495e; }
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); 
+                gap: 8px; margin: 10px auto; }
+        .cell { width: 75px; height: 75px; border: 2px solid #7f8c8d;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 24px; background: #2c3e50; border-radius: 5px; }
+        .right-panel { width: 250px; padding: 15px; background: #34495e; }
+        button { width: 100%; padding: 10px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h2>Oyun Alanı (5x5)</h2>
+            <div class="grid" id="gameGrid"></div>
+        </div>
+        <div class="right-panel">
+            <h3>Kartlar</h3>
+            <button onclick="setCellValue(1)">1</button>
+            <button onclick="setCellValue(2)">2</button>
+            <button onclick="setCellValue(3)">3</button>
+            <button onclick="setCellValue(4)">4</button>
+            <button onclick="setCellValue(5)">5</button>
+            <button onclick="setCellValue('K')">K</button>
+        </div>
+    </div>
+
+    <script>
+        // Oyun alanını oluştur
+        const grid = document.getElementById('gameGrid');
+        for(let i=0; i<25; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            cell.onclick = function() { this.textContent = 'X'; }; // Test için
+            grid.appendChild(cell);
+        }
+        
+        function setCellValue(val) {
+            const selected = document.querySelector('.cell.selected');
+            if(selected) selected.textContent = val;
+        }
+    </script>
+</body>
+</html>
